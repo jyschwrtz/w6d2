@@ -1,0 +1,98 @@
+/* PHASE 9: Forms */
+.content-main ul {
+  /*float: left;*/
+
+}
+
+.content-main {
+  display: flex;
+
+}
+
+.content-main form {
+  margin-left: 20px;
+  width: 90%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #eee;
+  padding: 20px;
+  height: 350px;
+}
+
+.input {
+  display: block;
+  margin-bottom: 25px;
+}
+
+.input input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block;
+  background-color: #fff;
+  width: 100%;
+  margin-top: 5px;
+  padding: 10px 10px;
+}
+
+.input textarea {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  margin-top: 5px;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  height: 150px;
+}
+
+.input input:focus {
+  border: 1px solid #0c0;
+}
+
+.input textarea:focus {
+  border: 1px solid #0c0;
+}
+
+.input span {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+
+.submit div {
+}
+
+.submit input {
+  background: #0c0;
+  color: white;
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin-right: 10px;
+  height: 40px;
+  font-weight: bold;
+  box-shadow: 0px 3px 1px #070;
+}
+
+.submit input:active {
+  box-shadow: none;
+  transform: translateY(3px);
+}
+
+.submit input:hover{
+  background: #0a0;
+}
+
+.submit div a {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.submit div a:hover {
+  color: red;
+}
+
+.submit {
+  display: flex;
+  align-items: center;
+}

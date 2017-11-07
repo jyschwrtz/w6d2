@@ -1,0 +1,34 @@
+/* PHASE 10: Posts */
+
+.post {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+.post-text {
+  width: 90%;
+  /*height: 33%;*/
+  margin-left: 20px;
+}
+
+.post ul {
+  display: flex;
+}
+
+.post-footer li {
+  margin-right: 10px;
+}
+
+.post-links li {
+  margin-left: 10px;
+}
+
+.post div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
