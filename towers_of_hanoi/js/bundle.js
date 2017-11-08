@@ -60,30 +60,16 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const Game = __webpack_require__(1);
-const View = __webpack_require__(2);
-
-$( () => {
-  const rootEl = $('.hanoi');
-  const game = new Game();
-  new View(game, rootEl);
-});
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports) {
 
 class Game {
   constructor() {
-    this.towers = [[3, 2, 1], [], []];
+    this.towers = [[3,2,1], [], []];
   }
 
   isValidMove(startTowerIdx, endTowerIdx) {
@@ -152,10 +138,24 @@ module.exports = Game;
 
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const Game = __webpack_require__(0);
+const View = __webpack_require__(2);
+
+$( () => {
+  const rootEl = $('.hanoi');
+  const game = new Game();
+  new View(game, rootEl);
+});
+
+
+/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const Game = __webpack_require__(1);
+const Game = __webpack_require__(0);
 
 class View {
   constructor(game, $el) {
@@ -163,6 +163,7 @@ class View {
     this.$el = $el;
     this.setupTowers();
     this.render();
+    this.clickTower();
   }
 
   setupTowers() {
@@ -171,7 +172,7 @@ class View {
 
     for (var i = 0; i < 3; i++) {
       let $li = $('<li></li>');
-      // $li.data('pos', i);
+      $li.data('pos', i);
       $li.addClass(`tower${i}`);
       $ul.append($li);
     }
@@ -179,8 +180,8 @@ class View {
   }
 
   render() {
+    $('div').remove();
     this.game.towers.forEach( (tower, idx) => {
-
       let $li = $(`.tower${idx}`);
       tower.forEach( disc => {
         let $disc = $('<div></div>');
@@ -191,9 +192,30 @@ class View {
   }
 
   clickTower() {
-
+    $('.towers').one('click', 'li', (event1) => {
+      let $towerOne = $(event1.currentTarget);
+      console.log($towerOne);
+      $towerOne.addClass('selected');
+      let pileNumber1 = $towerOne.data('pos');
+        $('.towers').one('click', 'li', (event2) => {
+          let $towerTwo = $(event2.currentTarget);
+          let pileNumber2 = $towerTwo.data('pos');
+          this.game.move(pileNumber1, pileNumber2);
+          $towerOne.removeClass('selected');
+          this.render();
+          this.winner();
+          this.clickTower();
+        });
+    });
   }
 
+  winner() {
+    if(this.game.isWon()) {
+      window.changeColor();
+      $('h1').addClass('animated bounceOutLeft');
+      $('h1').text('YOU WON!').removeClass('animated bounceOutLeft').addClass('animated bounceInRight').css('text-align', 'center');;
+    }
+  }
 }
 
 module.exports = View;
