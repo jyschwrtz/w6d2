@@ -1,0 +1,33 @@
+.towers {
+  display: flex;
+  width: 1300px;
+  list-style: none;
+  height: 350px;
+  margin: auto;
+}
+
+.towers li {
+  width: 33.33%;
+  border: 1px solid black;
+  background: lightblue;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.towers div {
+  height: 95px;
+  display: block;
+  border: 1px solid black;
+  background: red;
+}
+
+
+body h1 {
+  font-size: 50px;
+  text-align: center;
+  font-family: comic sans ms;
+  margin-bottom: 50px;
+}
